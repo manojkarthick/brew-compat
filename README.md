@@ -10,14 +10,10 @@ Install this tool from PyPI (The Python Package Index) using pip:
 ❯ pip install brew-compat 
 ```
 
-## Running
-
-* Use `brew bundle dump` to generate the Brewfile
-* Run `brew-compat` to check the compatibility status
-
 ## Options
 
 * By default, compatibility is checked for Big Sur. Use `--macos-version` to change the macOS version to check against.
+* By default, looks for a brewfile in the current directory.  
 * You can use `--export` to export the results to CSV. It is written to a file called `compatibility.csv`
 * Use `--verbose` to use verbose logging.
 
@@ -39,3 +35,41 @@ optional arguments:
 
 ```
 
+## Running
+
+* Use `brew bundle dump` to generate the Brewfile
+* Run `brew-compat` to check the compatibility status
+
+### Sample Output
+
+```
+❯ brew-compat
+[2021-02-26 21:02:30,486] INFO - Using Brewfile: ~/code/brew-compat/Brewfile
+[2021-02-26 21:02:30,486] INFO - Checking compatibility for big_sur
+[2021-02-26 21:02:30,486] INFO - Getting details from Homebrew API for formulae, hold on...
++-------------+-------------------------+-------------+
+| Kind        | Formula                 | Status      |
++-------------+-------------------------+-------------+
+| Bottle      | direnv                  | Supported   |
+| Bottle      | fzf                     | Supported   |
+| Bottle      | sqlite                  | Supported   |
+| Bottle      | goreleaser              | Supported   |
+| Bottle      | helm                    | Supported   |
+| Bottle      | kube-ps1                | No info     |
+| Bottle      | simple-mtpfs            | Unsupported |
+| Bottle      | smartmontools           | Supported   |
+| Bottle      | terminal-notifier       | Supported   |
+| Bottle      | tree                    | Supported   |
+| Bottle      | wget                    | Supported   |
+| Bottle      | xsv                     | Supported   |
+| Bottle      | manojkarthick/pqrs/pqrs | Unknown     |
+| Application | 1password               | Supported   |
+| Application | balenaetcher            | No info     |
+| Application | docker                  | No info     |
+| Application | google-chrome           | No info     |
+| Application | intel-power-gadget      | Supported   |
+| Application | intellij-idea           | No info     |
+| Application | iterm2                  | Supported   |
+| Application | monitorcontrol          | Supported   |
++-------------+-------------------------+-------------+
+```
